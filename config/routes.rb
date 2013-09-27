@@ -1,4 +1,7 @@
 SampleApp::Application.routes.draw do
+  
+  ComfortableMexicanSofa::Routing.admin(:path => '/cms-admin')
+  
   resources :users do
     member do
       get :following, :followers
@@ -14,4 +17,8 @@ SampleApp::Application.routes.draw do
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
+  
+  # Make sure this routeset is defined last
+  ComfortableMexicanSofa::Routing.content(:path => '/', :sitemap => false)
+  
 end
